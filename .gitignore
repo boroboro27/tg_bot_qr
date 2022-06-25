@@ -1,3 +1,5 @@
 venv/
 __pycache__
 bot_run.py
+requirements.txt
+Dockerfile
