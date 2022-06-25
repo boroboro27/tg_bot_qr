@@ -51,7 +51,7 @@ async def run_qr(msg: types.Message):
 
     await sqlite_db.sql_add_cmd(qr_dict)
 
-async def gen_qr(text: str):    
+async def gen_qr(text: str) -> str:    
     try:
         qr_code = pq.create(text)
         dt = str(datetime.now()) 
@@ -62,8 +62,6 @@ async def gen_qr(text: str):
         print(texterr:=f'Ошибка генерации QR-кода для запроса {text}: {err}')
         await bot.send_message(chat_id=CHAT_ID, text=texterr)
         return f'epicfail: {err}'
-
-
 
 def register_handlers_client(dp : Dispatcher):
     dp.register_message_handler(cmd_start, commands=['start', 'help'])    
