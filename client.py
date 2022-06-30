@@ -1,12 +1,10 @@
 from aiogram import types, Dispatcher
-from create_bot import dp, bot, CHAT_ID
+from create_bot import bot, CHAT_ID
 import sqlite_db
 import pyqrcode as pq
-import random
 from datetime import datetime
-from PIL import Image
 import os
-import asyncio
+
 
 async def cmd_start(msg: types.Message):
     await msg.delete()
@@ -19,9 +17,7 @@ async def cmd_start(msg: types.Message):
 async def run_qr(msg: types.Message):
     await bot.send_sticker(chat_id=msg.from_user.id, \
                            sticker=r"CAACAgIAAxkBAAEFFCVirulIFb8BuMm31xatlD2zw9EuegACrBQAAujW4hKEaMxpKiLYHyQE")
-    await msg.answer(text=f'{msg.from_user.first_name}, кот принял текст в обработку!\nПожалуйста, подожди!')
-
-    await asyncio.sleep(3, result=None)        
+    await msg.answer(text=f'{msg.from_user.first_name}, кот принял текст в обработку!\nПожалуйста, подожди!')      
    
     pic_png = await gen_qr(msg.text)  
 
@@ -53,7 +49,8 @@ async def run_qr(msg: types.Message):
 
 async def gen_qr(text: str) -> str:    
     try:
-        qr_code = pq.create(text)
+        #t = text.encode('utf-8')
+        qr_code = pq.create(text, encoding='utf-8')
         dt = str(datetime.now()) 
         qr_code.png(file=(pic:=(f'qr_code_' + dt + '.png')), \
                     scale=6)        

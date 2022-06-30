@@ -1,14 +1,11 @@
 from contextlib import suppress
-from datetime import datetime
-from aiogram.types import InputTextMessageContent, InlineQueryResultCachedPhoto
 from aiogram import types, Dispatcher
-from create_bot import dp, bot, CHAT_ID
+from create_bot import bot, CHAT_ID
 import hashlib
 import os
 import client
 import sqlite_db
-from aiogram.utils.exceptions import (MessageToEditNotFound, MessageCantBeEdited, MessageCantBeDeleted,
-                                      MessageToDeleteNotFound)
+from aiogram.utils.exceptions import MessageCantBeDeleted,MessageToDeleteNotFound
 
 
 async def inline_handler(querry: types.InlineQuery):

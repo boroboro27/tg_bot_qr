@@ -1,5 +1,9 @@
 import sqlite3 as sq
 from create_bot import bot, CHAT_ID
+import os
+
+cwd = os.getcwd()
+os.chdir(f'{cwd}/data_base')
 
 def sql_start():
     global base, cur
