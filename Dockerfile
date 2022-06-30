@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:latest
 LABEL name=rsb27
 RUN apt update -qy
 RUN apt install -qy python3.10 python3-pip python3.10-dev
